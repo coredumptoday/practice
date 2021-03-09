@@ -11,6 +11,10 @@ import "github.com/coredumptoday/practice/utils"
 	...
 */
 func SelectionSort(arr []int) {
+	if arr == nil || len(arr) <= 1 {
+		return
+	}
+
 	for i := 0; i < len(arr) - 1; i++ {
 		tMin := i
 		for j := i + 1; j < len(arr); j++ {
@@ -20,16 +24,6 @@ func SelectionSort(arr []int) {
 		}
 		utils.IntSliceSwap(arr, i, tMin)
 	}
-
-	/*for i := len(arr) - 1; i >= 0; i-- {
-		tMax := i
-		for j := i - 1; j >= 0; j-- {
-			if arr[j] > arr[tMax] {
-				tMax = j
-			}
-		}
-		utils.IntSliceSwap(arr, i, tMax)
-	}*/
 }
 
 /*
@@ -41,6 +35,10 @@ func SelectionSort(arr []int) {
 	...
 */
 func BubbleSort(arr []int) {
+	if arr == nil || len(arr) <= 1 {
+		return
+	}
+
 	for e := len(arr) - 1; e > 0; e-- {
 		tMax := e
 		for j := e - 1; j >= 0; j-- {
@@ -49,5 +47,28 @@ func BubbleSort(arr []int) {
 			}
 		}
 		utils.IntSliceSwap(arr, e, tMax)
+	}
+}
+
+/*
+	插入排序
+	1. 0 位置上有序
+	2. 0 ~ 1 位置上有序
+	3. 0 ~ 2 位置上有序
+	4. 0 ~ 3 位置上有序
+	....
+	...
+*/
+func InsertionSort(arr []int)  {
+	if arr == nil || len(arr) <= 1 {
+		return
+	}
+
+	for i := 1; i < len(arr); i++ {
+		for j := i; j - 1 >= 0; j-- {
+			if arr[j - 1] > arr[j] {
+				utils.IntSliceSwap(arr, j, j - 1)
+			}
+		}
 	}
 }

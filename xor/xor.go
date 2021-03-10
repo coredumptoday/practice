@@ -56,7 +56,7 @@ func SearchKFromSlice(arr []int32, K, M int32) int32 {
 
 	t := make([]int32, 32)
 	for _, v := range arr {
-		for v != 0 {
+		for v != 0 {	//取出v所有位置上的1
 			rightOne := v & (-v)
 			t[ bitmap[rightOne] ]++
 			v ^= rightOne

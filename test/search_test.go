@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/coredumptoday/practice/search"
 	"github.com/coredumptoday/practice/utils"
+	"github.com/coredumptoday/practice/xor"
 	"sort"
 	"testing"
 )
@@ -129,4 +130,14 @@ func TestSearchRight(t *testing.T) {
 	}else {
 		fmt.Println("Fail!")
 	}
+}
+
+func TestOnlyOneOddNum(t *testing.T) {
+	arr := []int{3, 3, 2, 3, 1, 1, 1, 3, 1, 1, 1}
+	fmt.Println(xor.SearchOnlyOneShowOddNumFromSlice(arr))
+}
+
+func Test2OddNum(t *testing.T) {
+	arr := []int{ 4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2 }
+	fmt.Println(xor.SearchTwoShowOddNumFromSlice(arr))
 }

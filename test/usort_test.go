@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"github.com/coredumptoday/practice/psort"
+	"github.com/coredumptoday/practice/usort"
 	"github.com/coredumptoday/practice/utils"
 	"sort"
 	"testing"
@@ -10,7 +10,7 @@ import (
 
 func TestSelectionSort(t *testing.T)  {
 	testTime := 500000
-	maxSize := 100
+	maxSize := 50
 	maxValue := 100
 	succeed := true
 
@@ -19,7 +19,7 @@ func TestSelectionSort(t *testing.T)  {
 		a2 := make([]int, len(a1))
 		copy(a2, a1)
 
-		psort.SelectionSort(a1)
+		usort.SelectionSort(a1)
 		sort.Ints(a2)
 
 		if !utils.IsSliceEqual(a1, a2) {
@@ -54,7 +54,7 @@ func TestBubbleSort(t *testing.T)  {
 		a2 := make([]int, len(a1))
 		copy(a2, a1)
 
-		psort.BubbleSort(a1)
+		usort.BubbleSort(a1)
 		sort.Ints(a2)
 
 		if !utils.IsSliceEqual(a1, a2) {
@@ -89,7 +89,7 @@ func TestInsertionSort(t *testing.T)  {
 		a2 := make([]int, len(a1))
 		copy(a2, a1)
 
-		psort.InsertionSort(a1)
+		usort.InsertionSort(a1)
 		sort.Ints(a2)
 
 		if !utils.IsSliceEqual(a1, a2) {

@@ -1,6 +1,8 @@
-package psort
+package usort
 
-import "github.com/coredumptoday/practice/utils"
+import (
+	"github.com/coredumptoday/practice/xor"
+)
 
 /*
 	选择排序
@@ -22,7 +24,8 @@ func SelectionSort(arr []int) {
 				tMin = j
 			}
 		}
-		utils.IntSliceSwap(arr, i, tMin)
+		//utils.IntSliceSwap(arr, i, tMin)
+		xor.Swap(arr, i, tMin)
 	}
 }
 
@@ -46,7 +49,8 @@ func BubbleSort(arr []int) {
 				tMax = j
 			}
 		}
-		utils.IntSliceSwap(arr, e, tMax)
+		//utils.IntSliceSwap(arr, e, tMax)
+		xor.Swap(arr, e, tMax)
 	}
 }
 
@@ -67,7 +71,8 @@ func InsertionSort(arr []int)  {
 	for i := 1; i < len(arr); i++ {
 		for j := i; j - 1 >= 0; j-- {
 			if arr[j - 1] > arr[j] {
-				utils.IntSliceSwap(arr, j, j - 1)
+				//utils.IntSliceSwap(arr, j, j - 1)
+				xor.Swap(arr, j, j - 1)
 			}
 		}
 	}

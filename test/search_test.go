@@ -5,6 +5,7 @@ import (
 	"github.com/coredumptoday/practice/search"
 	"github.com/coredumptoday/practice/utils"
 	"github.com/coredumptoday/practice/xor"
+	"math"
 	"sort"
 	"testing"
 )
@@ -140,4 +141,35 @@ func TestOnlyOneOddNum(t *testing.T) {
 func Test2OddNum(t *testing.T) {
 	arr := []int{ 4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2 }
 	fmt.Println(xor.SearchTwoShowOddNumFromSlice(arr))
+}
+
+func TestSearchKM(t *testing.T) {
+	kinds := 5
+	xrange := 30
+	testTime := 100000
+	max := 9
+	fmt.Println("测试开始")
+	for i := 0; i < testTime; i++ {
+		a := int( utils.GetRandNum() * float32(max) + 1 ) // a 1 ~ 9
+		b := int( utils.GetRandNum() * float32(max) + 1 ) // b 1 ~ 9
+		k := int( math.Min(float64(a), float64(b)) )
+		m := int( math.Max(float64(a), float64(b)) )
+		// k < m
+		if k == m {
+			m++
+		}
+
+		arr, kTimeNum := utils.MKRandomSlice(kinds, xrange, k, m)
+		ans1 := utils.KmTest(arr, int32(k))
+		ans2 := xor.SearchKFromSlice(arr, int32(k), int32(m))
+		if ans1 != ans2 {
+			fmt.Printf("arr: %v, k: %v, kNum: %v\n", arr, k, kTimeNum)
+			fmt.Println(ans1)
+			fmt.Println(ans2)
+			fmt.Println("出错了！")
+			t.Fail()
+			break
+		}
+	}
+	fmt.Println("测试结束")
 }

@@ -50,3 +50,25 @@ func TestRevDoubleList(t *testing.T) {
 	}
 	fmt.Println("double test done!!!!")
 }
+
+func TestRemoveValue(t *testing.T) {
+	length := int32(50)
+	value := int32(100)
+	testTime := 100000
+	v := int32(utils.GetRandNum() * float32(value+1))
+	fmt.Println("test begin!")
+	for i := 0; i < testTime; i++ {
+		linked := utils.GenerateRandomLinkedList(length, value)
+		s := utils.GetSliceWithNoValue(linked, v)
+
+		if !utils.CheckRemoveValue(s, linked) {
+			fmt.Println("RemoveValue: ", v)
+			fmt.Print("LinkedList: ")
+			utils.PrintLinkedList(linked)
+			fmt.Print("Slice: ")
+			utils.PrintSliceRev(s, false)
+			t.Fail()
+			break
+		}
+	}
+}

@@ -136,3 +136,23 @@ func CheckSliceAndDoubleList(a []int32, head *list.DoubleNode) bool {
 	}
 	return true
 }
+
+func GetSliceWithNoValue(head *list.Node, v int32) []int32 {
+	s := make([]int32, 0)
+	for head != nil {
+		if head.Value != v {
+			s = append(s, head.Value)
+		}
+	}
+	return s
+}
+
+func CheckRemoveValue(a []int32, head *list.Node) bool {
+	for _, v := range a {
+		if v != head.Value {
+			return false
+		}
+		head = head.Next
+	}
+	return true
+}

@@ -24,3 +24,18 @@ func RevLinkedList(head *Node) *Node {
 
 	return prev
 }
+
+func RevDoubleList(head *DoubleNode) *DoubleNode {
+	var prev *DoubleNode
+	var next *DoubleNode
+
+	for head != nil {
+		next = head.Next
+		head.Next = prev
+		head.Prev = next
+		prev = head
+		head = next
+	}
+
+	return prev
+}

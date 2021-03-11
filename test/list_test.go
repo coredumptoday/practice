@@ -1,6 +1,7 @@
 package test
 
 import (
+	clist "container/list"
 	"fmt"
 	"github.com/coredumptoday/practice/list"
 	"github.com/coredumptoday/practice/utils"
@@ -69,6 +70,52 @@ func TestRemoveValue(t *testing.T) {
 			utils.PrintSliceRev(s, false)
 			t.Fail()
 			break
+		}
+	}
+}
+
+func TestQueue(t *testing.T) {
+	oneTestDataNum := 100
+	value := 10000
+	testTimes := 100000
+	for i := 0; i < testTimes; i++ {
+		myQueue := list.DoubleEndsQueue{}
+		stdQueue := clist.New()
+
+		for j := 0; j < oneTestDataNum; j++ {
+			num := int32(utils.GetRandNum() * float32(value))
+
+			if stdQueue.Len() == 0 {
+				myQueue.AddFromHead(num)
+				stdQueue.PushFront(num)
+			} else {
+				if utils.GetRandNum() < 0.5 {
+					myQueue.AddFromHead(num)
+					stdQueue.PushFront(num)
+				} else {
+					myValue := myQueue.PopFromBottom()
+					stdValue := stdQueue.Back()
+					stdQueue.Remove(stdValue)
+
+					if (myValue == nil && stdValue != nil) || (myValue != nil && stdValue == nil) {
+						fmt.Println("oops!")
+						fmt.Println(myValue, stdValue)
+						t.Fail()
+						return
+					} else if (myValue != nil && stdValue != nil) && myValue.Value != stdValue.Value {
+						fmt.Println("oops!")
+						fmt.Println(myValue, stdValue)
+						t.Fail()
+						return
+					}
+				}
+			}
+		}
+
+		if myQueue.GetLength() != int32(stdQueue.Len()) {
+			fmt.Println("length not equal")
+			t.Fail()
+			return
 		}
 	}
 }

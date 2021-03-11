@@ -39,3 +39,23 @@ func RevDoubleList(head *DoubleNode) *DoubleNode {
 
 	return prev
 }
+
+func RemoveValue(head *Node, value int32) *Node {
+	for head.Value == value {
+		head = head.Next
+	}
+
+	var cur *Node = head
+	var prev *Node = head
+
+	for cur != nil {
+		if cur.Value == value {
+			prev.Next = cur.Next
+		} else {
+			prev = cur
+		}
+		cur = cur.Next
+	}
+
+	return head
+}

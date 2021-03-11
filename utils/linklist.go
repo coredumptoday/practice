@@ -143,6 +143,7 @@ func GetSliceWithNoValue(head *list.Node, v int32) []int32 {
 		if head.Value != v {
 			s = append(s, head.Value)
 		}
+		head = head.Next
 	}
 	return s
 }

@@ -1,118 +1,5 @@
 package list
 
-type doubleEndsQueue struct {
-	head   *DoubleNode
-	tail   *DoubleNode
-	length int32
-}
-
-func (q *doubleEndsQueue) isEmpty() bool {
-	return q.head == nil
-}
-
-func (q *doubleEndsQueue) getLength() int32 {
-	return q.length
-}
-
-func (q *doubleEndsQueue) addFromHead(value int32) {
-	node := DoubleNode{
-		Value: value,
-		Next:  nil,
-		Prev:  nil,
-	}
-
-	if q.head == nil {
-		q.tail = &node
-	} else {
-		node.Next = q.head
-		q.head.Prev = &node
-	}
-	q.head = &node
-	q.length++
-}
-
-func (q *doubleEndsQueue) addFromBottom(value int32) {
-	node := DoubleNode{
-		Value: value,
-		Next:  nil,
-		Prev:  nil,
-	}
-
-	if q.head == nil {
-		q.head = &node
-	} else {
-		node.Prev = q.tail
-		q.tail.Next = &node
-	}
-	q.tail = &node
-	q.length++
-}
-
-func (q *doubleEndsQueue) popFromHead() *DoubleNode {
-	if q.head == nil {
-		return nil
-	}
-
-	cur := q.head
-
-	q.head = q.head.Next
-	if q.head == nil {
-		q.tail = nil
-	}
-
-	q.length--
-	return cur
-}
-
-func (q *doubleEndsQueue) popFromBottom() *DoubleNode {
-	if q.tail == nil {
-		return nil
-	}
-
-	cur := q.tail
-
-	q.tail = q.tail.Prev
-	if q.tail == nil {
-		q.head = nil
-	} else {
-		q.tail.Next = nil
-	}
-
-	q.length--
-	return cur
-}
-
-func NewStack() *MyStack {
-	s := &MyStack{
-		queue: &doubleEndsQueue{
-			head:   nil,
-			tail:   nil,
-			length: 0,
-		},
-	}
-	return s
-}
-
-type MyStack struct {
-	queue *doubleEndsQueue
-}
-
-func (s *MyStack) Push(value int32) {
-	s.queue.addFromHead(value)
-}
-
-func (s *MyStack) Pop() *DoubleNode {
-	return s.queue.popFromHead()
-}
-
-func (s *MyStack) IsEmpty() bool {
-	return s.queue.isEmpty()
-}
-
-func (s *MyStack) Len() int32 {
-	return s.queue.getLength()
-}
-
 func NewQueue() *MyQueue {
 	s := &MyQueue{
 		queue: &doubleEndsQueue{
@@ -142,4 +29,57 @@ func (s *MyQueue) IsEmpty() bool {
 
 func (s *MyQueue) Len() int32 {
 	return s.queue.getLength()
+}
+
+func NewRingArr(cap int) *RingArr {
+	return &RingArr{
+		head: 0,
+		tail: 0,
+		data: make([]int, cap),
+		len:  0,
+		cap:  cap,
+	}
+}
+
+type RingArr struct {
+	head int
+	tail int
+	data []int
+	len  int
+	cap  int
+}
+
+func (r *RingArr) nextIdx(v int) int {
+	if v+1 < r.cap {
+		return v + 1
+	} else {
+		return 0
+	}
+}
+
+func (r *RingArr) Push(v int) bool {
+	if r.len >= r.cap {
+		return false
+	}
+
+	r.len++
+	r.data[r.head] = v
+	r.head = r.nextIdx(r.head)
+	return true
+}
+
+func (r *RingArr) Pop() (int, bool) {
+	if r.len <= 0 {
+		return 0, false
+	}
+
+	r.len--
+	d := r.data[r.tail]
+	r.tail = r.nextIdx(r.tail)
+
+	return d, true
+}
+
+func (r *RingArr) Len() int {
+	return r.len
 }

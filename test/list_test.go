@@ -79,21 +79,21 @@ func TestQueue(t *testing.T) {
 	value := 10000
 	testTimes := 100000
 	for i := 0; i < testTimes; i++ {
-		myQueue := list.DoubleEndsQueue{}
+		myQueue := list.NewQueue()
 		stdQueue := clist.New()
 
 		for j := 0; j < oneTestDataNum; j++ {
 			num := int32(utils.GetRandNum() * float32(value))
 
 			if stdQueue.Len() == 0 {
-				myQueue.AddFromHead(num)
+				myQueue.Push(num)
 				stdQueue.PushFront(num)
 			} else {
 				if utils.GetRandNum() < 0.5 {
-					myQueue.AddFromHead(num)
+					myQueue.Push(num)
 					stdQueue.PushFront(num)
 				} else {
-					myValue := myQueue.PopFromBottom()
+					myValue := myQueue.Pop()
 					stdValue := stdQueue.Back()
 					stdQueue.Remove(stdValue)
 
@@ -112,7 +112,53 @@ func TestQueue(t *testing.T) {
 			}
 		}
 
-		if myQueue.GetLength() != int32(stdQueue.Len()) {
+		if myQueue.Len() != int32(stdQueue.Len()) {
+			fmt.Println("length not equal")
+			t.Fail()
+			return
+		}
+	}
+}
+
+func TestStack(t *testing.T) {
+	oneTestDataNum := 100
+	value := 10000
+	testTimes := 100000
+	for i := 0; i < testTimes; i++ {
+		myStack := list.NewStack()
+		stdStack := clist.New()
+
+		for j := 0; j < oneTestDataNum; j++ {
+			num := int32(utils.GetRandNum() * float32(value))
+
+			if stdStack.Len() == 0 {
+				myStack.Push(num)
+				stdStack.PushFront(num)
+			} else {
+				if utils.GetRandNum() < 0.5 {
+					myStack.Push(num)
+					stdStack.PushFront(num)
+				} else {
+					myValue := myStack.Pop()
+					stdValue := stdStack.Front()
+					stdStack.Remove(stdValue)
+
+					if (myValue == nil && stdValue != nil) || (myValue != nil && stdValue == nil) {
+						fmt.Println("oops!")
+						fmt.Println(myValue, stdValue)
+						t.Fail()
+						return
+					} else if (myValue != nil && stdValue != nil) && myValue.Value != stdValue.Value {
+						fmt.Println("oops!")
+						fmt.Println(myValue, stdValue)
+						t.Fail()
+						return
+					}
+				}
+			}
+		}
+
+		if myStack.Len() != int32(stdStack.Len()) {
 			fmt.Println("length not equal")
 			t.Fail()
 			return

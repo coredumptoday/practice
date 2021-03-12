@@ -1,4 +1,4 @@
-package list
+package linear
 
 type Node struct {
 	Value int32

@@ -1,4 +1,4 @@
-package list
+package linear
 
 import (
 	clist "container/list"

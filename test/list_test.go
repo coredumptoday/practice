@@ -3,7 +3,7 @@ package test
 import (
 	clist "container/list"
 	"fmt"
-	"github.com/coredumptoday/practice/list"
+	"github.com/coredumptoday/practice/linear"
 	"github.com/coredumptoday/practice/utils"
 	"testing"
 )
@@ -16,7 +16,7 @@ func TestRevLinkedList(t *testing.T) {
 	for i := 0; i < testTime; i++ {
 		linked := utils.GenerateRandomLinkedList(length, value)
 		s := utils.GetLinkedListSlice(linked)
-		linked = list.RevLinkedList(linked)
+		linked = linear.RevLinkedList(linked)
 
 		if !utils.CheckSliceAndLinkedList(s, linked) {
 			fmt.Print("LinkedList: ")
@@ -38,7 +38,7 @@ func TestRevDoubleList(t *testing.T) {
 	for i := 0; i < testTime; i++ {
 		doubleList := utils.GenerateRandomDoubleList(length, value)
 		s := utils.GetDoubleListSlice(doubleList)
-		revList := list.RevDoubleList(doubleList)
+		revList := linear.RevDoubleList(doubleList)
 
 		if !utils.CheckSliceAndDoubleList(s, revList) {
 			fmt.Print("DoubleList: ")
@@ -61,7 +61,7 @@ func TestRemoveValue(t *testing.T) {
 		v := int32(utils.GetRandNum() * float32(value+1))
 		linked := utils.GenerateRandomLinkedList(length, value)
 		s := utils.GetSliceWithNoValue(linked, v)
-		linked = list.RemoveValue(linked, v)
+		linked = linear.RemoveValue(linked, v)
 
 		if !utils.CheckRemoveValue(s, linked) {
 			fmt.Println("RemoveValue: ", v)
@@ -88,7 +88,7 @@ func TestQueue(t *testing.T) {
 	value := 10000
 	testTimes := 100000
 	for i := 0; i < testTimes; i++ {
-		myQueue := list.NewQueue()
+		myQueue := linear.NewQueue()
 		stdQueue := clist.New()
 
 		for j := 0; j < oneTestDataNum; j++ {
@@ -134,7 +134,7 @@ func TestStack(t *testing.T) {
 	value := 10000
 	testTimes := 100000
 	for i := 0; i < testTimes; i++ {
-		myStack := list.NewStack()
+		myStack := linear.NewStack()
 		stdStack := clist.New()
 
 		for j := 0; j < oneTestDataNum; j++ {
@@ -181,7 +181,7 @@ func TestRingArray(t *testing.T) {
 	testTimes := 100000
 	for i := 0; i < testTimes; i++ {
 		cap := int(utils.GetRandNum() * float32(value))
-		ringArr := list.NewRingArr(cap)
+		ringArr := linear.NewRingArr(cap)
 		stdQueue := clist.New()
 
 		for j := 0; j < oneTestDataNum; j++ {
@@ -226,7 +226,7 @@ func TestRingArray(t *testing.T) {
 }
 
 func TestMinStack(t *testing.T) {
-	mStack := list.NewMinStack()
+	mStack := linear.NewMinStack()
 
 	fmt.Println("push", 3)
 	mStack.Push(3)
@@ -242,7 +242,7 @@ func TestMinStack(t *testing.T) {
 }
 
 func TestStackQueue(t *testing.T) {
-	sQueue := list.NewStackQueue()
+	sQueue := linear.NewStackQueue()
 	sQueue.Add(1)
 	sQueue.Add(2)
 	sQueue.Add(3)
@@ -271,7 +271,7 @@ func TestStackQueue(t *testing.T) {
 
 func TestQueueStack(t *testing.T) {
 	fmt.Println("test begin")
-	myStack := list.NewQueueStack()
+	myStack := linear.NewQueueStack()
 	stdStack := clist.New()
 	testTime := 1000000
 	max := 1000000

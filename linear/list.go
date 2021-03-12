@@ -1,4 +1,4 @@
-package list
+package linear
 
 func RevLinkedList(head *Node) *Node {
 	var prev *Node

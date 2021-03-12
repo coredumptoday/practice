@@ -2,10 +2,10 @@ package utils
 
 import (
 	"fmt"
-	"github.com/coredumptoday/practice/list"
+	"github.com/coredumptoday/practice/linear"
 )
 
-func PrintLinkedList(head *list.Node) {
+func PrintLinkedList(head *linear.Node) {
 	for head != nil {
 		fmt.Print(head.Value, " -> ")
 		head = head.Next
@@ -13,7 +13,7 @@ func PrintLinkedList(head *list.Node) {
 	fmt.Println("null")
 }
 
-func PrintDoubleList(head *list.DoubleNode) {
+func PrintDoubleList(head *linear.DoubleNode) {
 	for head != nil {
 		if head.Prev == nil {
 			fmt.Print("null <-")
@@ -31,13 +31,13 @@ func PrintDoubleList(head *list.DoubleNode) {
 	fmt.Println()
 }
 
-func GenerateRandomLinkedList(length, value int32) *list.Node {
+func GenerateRandomLinkedList(length, value int32) *linear.Node {
 	size := int32(GetRandNum() * float32(length+1))
 	if size == 0 {
 		return nil
 	}
 
-	head := list.Node{
+	head := linear.Node{
 		Value: int32(GetRandNum() * float32(value+1)),
 		Next:  nil,
 	}
@@ -45,7 +45,7 @@ func GenerateRandomLinkedList(length, value int32) *list.Node {
 	size--
 
 	for size != 0 {
-		cur := list.Node{
+		cur := linear.Node{
 			Value: int32(GetRandNum() * float32(value+1)),
 			Next:  nil,
 		}
@@ -57,13 +57,13 @@ func GenerateRandomLinkedList(length, value int32) *list.Node {
 	return &head
 }
 
-func GenerateRandomDoubleList(length, value int32) *list.DoubleNode {
+func GenerateRandomDoubleList(length, value int32) *linear.DoubleNode {
 	size := int32(GetRandNum() * float32(length+1))
 	if size == 0 {
 		return nil
 	}
 
-	head := list.DoubleNode{
+	head := linear.DoubleNode{
 		Value: int32(GetRandNum() * float32(value+1)),
 		Next:  nil,
 		Prev:  nil,
@@ -72,7 +72,7 @@ func GenerateRandomDoubleList(length, value int32) *list.DoubleNode {
 	size--
 
 	for size != 0 {
-		cur := list.DoubleNode{
+		cur := linear.DoubleNode{
 			Value: int32(GetRandNum() * float32(value+1)),
 			Next:  nil,
 			Prev:  prev,
@@ -85,7 +85,7 @@ func GenerateRandomDoubleList(length, value int32) *list.DoubleNode {
 	return &head
 }
 
-func GetLinkedListSlice(head *list.Node) []int32 {
+func GetLinkedListSlice(head *linear.Node) []int32 {
 	l := make([]int32, 0)
 	for head != nil {
 		l = append(l, head.Value)
@@ -94,7 +94,7 @@ func GetLinkedListSlice(head *list.Node) []int32 {
 	return l
 }
 
-func GetDoubleListSlice(head *list.DoubleNode) []int32 {
+func GetDoubleListSlice(head *linear.DoubleNode) []int32 {
 	l := make([]int32, 0)
 	for head != nil {
 		l = append(l, head.Value)
@@ -117,7 +117,7 @@ func PrintSliceRev(a []int32, isDouble bool) {
 	fmt.Println("null")
 }
 
-func CheckSliceAndLinkedList(a []int32, head *list.Node) bool {
+func CheckSliceAndLinkedList(a []int32, head *linear.Node) bool {
 	for i := len(a) - 1; i >= 0; i-- {
 		if a[i] != head.Value {
 			return false
@@ -127,7 +127,7 @@ func CheckSliceAndLinkedList(a []int32, head *list.Node) bool {
 	return true
 }
 
-func CheckSliceAndDoubleList(a []int32, head *list.DoubleNode) bool {
+func CheckSliceAndDoubleList(a []int32, head *linear.DoubleNode) bool {
 	for i := len(a) - 1; i >= 0; i-- {
 		if a[i] != head.Value {
 			return false
@@ -137,7 +137,7 @@ func CheckSliceAndDoubleList(a []int32, head *list.DoubleNode) bool {
 	return true
 }
 
-func GetSliceWithNoValue(head *list.Node, v int32) []int32 {
+func GetSliceWithNoValue(head *linear.Node, v int32) []int32 {
 	s := make([]int32, 0)
 	for head != nil {
 		if head.Value != v {
@@ -148,7 +148,7 @@ func GetSliceWithNoValue(head *list.Node, v int32) []int32 {
 	return s
 }
 
-func CheckRemoveValue(a []int32, head *list.Node) bool {
+func CheckRemoveValue(a []int32, head *linear.Node) bool {
 	for _, v := range a {
 		if v != head.Value {
 			return false

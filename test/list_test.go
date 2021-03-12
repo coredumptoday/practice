@@ -268,3 +268,64 @@ func TestStackQueue(t *testing.T) {
 	a, ok = sQueue.Peek()
 	fmt.Println("peek", a, ok)
 }
+
+func TestQueueStack(t *testing.T) {
+	fmt.Println("test begin")
+	myStack := list.NewQueueStack()
+	stdStack := clist.New()
+	testTime := 1000000
+	max := 1000000
+	for i := 0; i < testTime; i++ {
+		if myStack.IsEmpty() {
+			if !(stdStack.Len() == 0) {
+				fmt.Println("empty Oops", stdStack.Len(), myStack.Len())
+				t.Fail()
+				return
+			}
+			num := int(utils.GetRandNum() * float32(max))
+			myStack.Push(num)
+			stdStack.PushFront(num)
+		} else {
+			if utils.GetRandNum() < 0.25 {
+				num := int(utils.GetRandNum() * float32(max))
+				myStack.Push(num)
+				stdStack.PushFront(num)
+			} else if utils.GetRandNum() < 0.5 {
+				v, ok := myStack.Peek()
+				stdV := stdStack.Front()
+
+				if (ok && stdV == nil) || (!ok && stdV != nil) {
+					fmt.Println("peek1 Oops")
+					t.Fail()
+					return
+				} else if (ok && stdV != nil) && stdV.Value != v {
+					fmt.Println("peek2 Oops", ok, stdV, stdV.Value, v)
+					t.Fail()
+					return
+				}
+			} else if utils.GetRandNum() < 0.75 {
+				v, ok := myStack.Poll()
+				stdV := stdStack.Front()
+				if stdV != nil {
+					stdStack.Remove(stdV)
+				}
+
+				if (ok && stdV == nil) || (!ok && stdV != nil) {
+					fmt.Println("poll1 Oops")
+					t.Fail()
+					return
+				} else if ok && stdV != nil && stdV.Value != v {
+					fmt.Println("poll2 Oops", ok, stdV, stdV.Value, v)
+					t.Fail()
+					return
+				}
+			} else {
+				if myStack.IsEmpty() != (stdStack.Len() == 0) {
+					fmt.Println("Oops", stdStack.Len(), myStack.Len())
+				}
+			}
+		}
+	}
+
+	fmt.Println("test finish!")
+}

@@ -240,3 +240,31 @@ func TestMinStack(t *testing.T) {
 	fmt.Println("pop", mStack.Pop())
 	fmt.Println("getMin", mStack.GetMin())
 }
+
+func TestStackQueue(t *testing.T) {
+	sQueue := list.NewStackQueue()
+	sQueue.Add(1)
+	sQueue.Add(2)
+	sQueue.Add(3)
+
+	a, ok := sQueue.Peek()
+	fmt.Println("peek", a, ok)
+
+	a, ok = sQueue.Poll()
+	fmt.Println("poll", a, ok)
+
+	a, ok = sQueue.Peek()
+	fmt.Println("peek", a, ok)
+
+	a, ok = sQueue.Poll()
+	fmt.Println("poll", a, ok)
+
+	a, ok = sQueue.Peek()
+	fmt.Println("peek", a, ok)
+
+	a, ok = sQueue.Poll()
+	fmt.Println("poll", a, ok)
+
+	a, ok = sQueue.Peek()
+	fmt.Println("peek", a, ok)
+}

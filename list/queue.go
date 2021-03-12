@@ -1,5 +1,9 @@
 package list
 
+import (
+	clist "container/list"
+)
+
 func NewQueue() *MyQueue {
 	s := &MyQueue{
 		queue: &doubleEndsQueue{
@@ -82,4 +86,61 @@ func (r *RingArr) Pop() (int, bool) {
 
 func (r *RingArr) Len() int {
 	return r.len
+}
+
+func NewStackQueue() *StackQueue {
+	return &StackQueue{
+		pushStack: clist.New(),
+		popStack:  clist.New(),
+	}
+}
+
+type StackQueue struct {
+	pushStack *clist.List
+	popStack  *clist.List
+}
+
+func (sq *StackQueue) changeStack() {
+	for sq.pushStack.Len() > 0 {
+		v := sq.pushStack.Front()
+		sq.pushStack.Remove(v)
+		sq.popStack.PushFront(v.Value)
+	}
+}
+
+func (sq *StackQueue) Add(v int) {
+	sq.pushStack.PushFront(v)
+}
+
+func (sq *StackQueue) Poll() (int, bool) {
+	if sq.popStack.Len() <= 0 {
+		sq.changeStack()
+	}
+
+	v := sq.popStack.Front()
+
+	if v == nil {
+		return 0, false
+	}
+
+	sq.popStack.Remove(v)
+	res, _ := v.Value.(int)
+
+	return res, true
+}
+
+func (sq *StackQueue) Peek() (int, bool) {
+	if sq.popStack.Len() <= 0 {
+		sq.changeStack()
+	}
+
+	v := sq.popStack.Front()
+
+	if v == nil {
+		return 0, false
+	}
+
+	res, _ := v.Value.(int)
+
+	return res, true
 }

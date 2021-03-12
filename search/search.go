@@ -1,5 +1,7 @@
 package search
 
+import "math"
+
 func BinarySortExist(arr []int, v int) bool {
 	if arr == nil || len(arr) == 0 {
 		return false
@@ -8,7 +10,7 @@ func BinarySortExist(arr []int, v int) bool {
 	if len(arr) == 1 {
 		if arr[0] == v {
 			return true
-		}else {
+		} else {
 			return false
 		}
 	}
@@ -17,12 +19,12 @@ func BinarySortExist(arr []int, v int) bool {
 	R := len(arr) - 1
 
 	for L < R {
-		mid := L + (R - L) / 2
+		mid := L + (R-L)/2
 		if arr[mid] == v {
 			return true
-		}else if arr[mid] > v {
+		} else if arr[mid] > v {
 			R = mid - 1
-		}else {
+		} else {
 			L = mid + 1
 		}
 	}
@@ -41,11 +43,11 @@ func BinarySortSearchLeft(arr []int, value int) int {
 	R := len(arr) - 1
 
 	for L <= R {
-		mid := L + (R - L) / 2
+		mid := L + (R-L)/2
 		if arr[mid] >= value {
 			idx = mid
 			R = mid - 1
-		}else {
+		} else {
 			L = mid + 1
 		}
 	}
@@ -64,14 +66,37 @@ func BinarySortSearchRight(arr []int, value int) int {
 	R := len(arr) - 1
 
 	for L <= R {
-		mid := L + (R - L) / 2
+		mid := L + (R-L)/2
 		if arr[mid] <= value {
 			idx = mid
 			L = mid + 1
-		}else {
+		} else {
 			R = mid - 1
 		}
 	}
 
 	return idx
+}
+
+func MaxNumSearch(arr []int) int {
+	if arr == nil || len(arr) == 0 {
+		return math.MinInt32
+	}
+
+	m := process(arr, 0, len(arr)-1)
+
+	return int(m)
+}
+
+func process(arr []int, L, R int) float64 {
+	if L == R {
+		return float64(arr[L])
+	}
+
+	mid := L + ((R - L) >> 1)
+
+	left := process(arr, L, mid)
+	right := process(arr, mid+1, R)
+
+	return math.Max(left, right)
 }

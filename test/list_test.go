@@ -8,6 +8,7 @@ import (
 	"testing"
 )
 
+//单向链表翻转
 func TestRevLinkedList(t *testing.T) {
 	length := int32(50)
 	value := int32(100)
@@ -30,6 +31,7 @@ func TestRevLinkedList(t *testing.T) {
 	fmt.Println("test done!!!!")
 }
 
+//双向链表翻转
 func TestRevDoubleList(t *testing.T) {
 	length := int32(50)
 	value := int32(100)
@@ -52,6 +54,7 @@ func TestRevDoubleList(t *testing.T) {
 	fmt.Println("double test done!!!!")
 }
 
+//从链表中删除值为value的元素
 func TestRemoveValue(t *testing.T) {
 	length := int32(50)
 	value := int32(100)
@@ -83,6 +86,7 @@ func TestRemoveValue(t *testing.T) {
 	fmt.Println("test done!!!")
 }
 
+//双向链表手写队列
 func TestQueue(t *testing.T) {
 	oneTestDataNum := 100
 	value := 10000
@@ -129,6 +133,7 @@ func TestQueue(t *testing.T) {
 	}
 }
 
+//双向链表手写栈
 func TestStack(t *testing.T) {
 	oneTestDataNum := 100
 	value := 10000
@@ -175,6 +180,7 @@ func TestStack(t *testing.T) {
 	}
 }
 
+//数组环形队列
 func TestRingArray(t *testing.T) {
 	oneTestDataNum := 100
 	value := 10000
@@ -225,6 +231,7 @@ func TestRingArray(t *testing.T) {
 	}
 }
 
+//实现栈结构，并且O(1)返回最小值
 func TestMinStack(t *testing.T) {
 	mStack := linear.NewMinStack()
 
@@ -241,6 +248,7 @@ func TestMinStack(t *testing.T) {
 	fmt.Println("getMin", mStack.GetMin())
 }
 
+//用栈结构实现队列
 func TestStackQueue(t *testing.T) {
 	sQueue := linear.NewStackQueue()
 	sQueue.Add(1)
@@ -269,6 +277,7 @@ func TestStackQueue(t *testing.T) {
 	fmt.Println("peek", a, ok)
 }
 
+//用队列结构实现栈
 func TestQueueStack(t *testing.T) {
 	fmt.Println("test begin")
 	myStack := linear.NewQueueStack()

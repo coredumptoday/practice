@@ -8,7 +8,8 @@ import (
 	"testing"
 )
 
-func TestSelectionSort(t *testing.T)  {
+//选择排序
+func TestSelectionSort(t *testing.T) {
 	testTime := 500000
 	maxSize := 50
 	maxValue := 100
@@ -29,8 +30,8 @@ func TestSelectionSort(t *testing.T)  {
 			break
 		}
 
-		if (i + 1) % 20000 == 0 {
-			fmt.Println("SelectionSort succeed count: ", i + 1)
+		if (i+1)%20000 == 0 {
+			fmt.Println("SelectionSort succeed count: ", i+1)
 			fmt.Println("a1: ", a1)
 			fmt.Println("a2: ", a2)
 		}
@@ -38,12 +39,13 @@ func TestSelectionSort(t *testing.T)  {
 
 	if succeed {
 		fmt.Println("Nice!")
-	}else {
+	} else {
 		fmt.Println("Fail!")
 	}
 }
 
-func TestBubbleSort(t *testing.T)  {
+//冒泡排序
+func TestBubbleSort(t *testing.T) {
 	testTime := 500000
 	maxSize := 100
 	maxValue := 100
@@ -64,8 +66,8 @@ func TestBubbleSort(t *testing.T)  {
 			break
 		}
 
-		if (i + 1) % 20000 == 0 {
-			fmt.Println("BubbleSort succeed count: ", i + 1)
+		if (i+1)%20000 == 0 {
+			fmt.Println("BubbleSort succeed count: ", i+1)
 			fmt.Println("a1: ", a1)
 			fmt.Println("a2: ", a2)
 		}
@@ -73,12 +75,13 @@ func TestBubbleSort(t *testing.T)  {
 
 	if succeed {
 		fmt.Println("Nice!")
-	}else {
+	} else {
 		fmt.Println("Fail!")
 	}
 }
 
-func TestInsertionSort(t *testing.T)  {
+//插入排序
+func TestInsertionSort(t *testing.T) {
 	testTime := 500000
 	maxSize := 100
 	maxValue := 100
@@ -99,8 +102,8 @@ func TestInsertionSort(t *testing.T)  {
 			break
 		}
 
-		if (i + 1) % 20000 == 0 {
-			fmt.Println("InsertionSort succeed count: ", i + 1)
+		if (i+1)%20000 == 0 {
+			fmt.Println("InsertionSort succeed count: ", i+1)
 			fmt.Println("a1: ", a1)
 			fmt.Println("a2: ", a2)
 		}
@@ -108,7 +111,7 @@ func TestInsertionSort(t *testing.T)  {
 
 	if succeed {
 		fmt.Println("Nice!")
-	}else {
+	} else {
 		fmt.Println("Fail!")
 	}
 }

@@ -10,6 +10,7 @@ import (
 	"testing"
 )
 
+//二分法查找数组中是否存在
 func TestExist(t *testing.T) {
 	testTime := 500000
 	maxSize := 100
@@ -44,6 +45,7 @@ func TestExist(t *testing.T) {
 	}
 }
 
+//在arr上，找满足>=value的最左位置
 func TestSearchLeft(t *testing.T) {
 	testTime := 500000
 	maxSize := 40
@@ -88,6 +90,7 @@ func TestSearchLeft(t *testing.T) {
 	}
 }
 
+//在arr上，找满足<=value的最右位置
 func TestSearchRight(t *testing.T) {
 	testTime := 500000
 	maxSize := 40
@@ -133,16 +136,19 @@ func TestSearchRight(t *testing.T) {
 	}
 }
 
+//从slice中选出只出现奇数次的1个数
 func TestOnlyOneOddNum(t *testing.T) {
 	arr := []int{3, 3, 2, 3, 1, 1, 1, 3, 1, 1, 1}
 	fmt.Println(xor.SearchOnlyOneShowOddNumFromSlice(arr))
 }
 
+//从slice中选出只出现奇数次的2个数
 func Test2OddNum(t *testing.T) {
 	arr := []int{4, 3, 4, 2, 2, 2, 4, 1, 1, 1, 3, 3, 1, 1, 1, 4, 2, 2}
 	fmt.Println(xor.SearchTwoShowOddNumFromSlice(arr))
 }
 
+//从slice中选出只出现k次的1个数
 func TestSearchKM(t *testing.T) {
 	kinds := 5
 	xrange := 30
@@ -174,6 +180,7 @@ func TestSearchKM(t *testing.T) {
 	fmt.Println("测试结束")
 }
 
+//从slice中搜索最大值
 func TestSearchMax(t *testing.T) {
 	testTime := 500000
 	maxSize := 40

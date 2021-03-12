@@ -224,3 +224,19 @@ func TestRingArray(t *testing.T) {
 		}
 	}
 }
+
+func TestMinStack(t *testing.T) {
+	mStack := list.NewMinStack()
+
+	fmt.Println("push", 3)
+	mStack.Push(3)
+	fmt.Println("getMin", mStack.GetMin())
+	mStack.Push(4)
+	fmt.Println("push", 4)
+	fmt.Println("getMin", mStack.GetMin())
+	mStack.Push(1)
+	fmt.Println("push", 1)
+	fmt.Println("getMin", mStack.GetMin())
+	fmt.Println("pop", mStack.Pop())
+	fmt.Println("getMin", mStack.GetMin())
+}

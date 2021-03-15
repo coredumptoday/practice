@@ -55,19 +55,21 @@ func (ch *CusMaxHeap) Pop() (int, error) {
 
 	ch.size--
 	ch.data[0] = ch.data[ch.size]
-	ch.heapify(0)
+	ch.heapify(0, ch.size)
 
 	return v, nil
 }
 
-func (ch *CusMaxHeap) heapify(idx int) {
+func (ch *CusMaxHeap) heapify(idx int, heapSize int) {
 	leftChild := idx*2 + 1
-	for leftChild < ch.size {
+	for leftChild < heapSize {
 		var largest int
-		if ch.data[leftChild] > ch.data[leftChild+1] {
+		if leftChild+1 >= heapSize {
 			largest = leftChild
-		} else {
+		} else if ch.data[leftChild] < ch.data[leftChild+1] {
 			largest = leftChild + 1
+		} else {
+			largest = leftChild
 		}
 
 		if ch.data[largest] < ch.data[idx] {
@@ -82,6 +84,33 @@ func (ch *CusMaxHeap) heapify(idx int) {
 
 func (ch *CusMaxHeap) PrintSlice() {
 	fmt.Println("MaxHeap: ", ch.data, "len: ", ch.size)
+}
+
+func BuildHeapFromSlice(arr []int) *CusMaxHeap {
+	size := len(arr)
+
+	h := &CusMaxHeap{
+		data:  make([]int, size),
+		limit: size,
+		size:  size,
+	}
+
+	for i := size - 1; i >= 0; i-- {
+		h.data[i] = arr[i]
+		h.heapify(i, size)
+	}
+
+	heapSize := size
+	heapSize--
+	utils.IntSliceSwap(arr, 0, heapSize)
+	// O(N*logN)
+	for heapSize > 0 { // O(N)
+		h.heapify(0, heapSize) // O(logN)
+		heapSize--
+		utils.IntSliceSwap(arr, 0, heapSize) // O(1)
+	}
+
+	return h
 }
 
 func NewHeapSlice(cap int) *MaxHeapSlice {

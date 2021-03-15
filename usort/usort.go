@@ -17,7 +17,7 @@ func SelectionSort(arr []int) {
 		return
 	}
 
-	for i := 0; i < len(arr) - 1; i++ {
+	for i := 0; i < len(arr)-1; i++ {
 		tMin := i
 		for j := i + 1; j < len(arr); j++ {
 			if arr[j] < arr[tMin] {
@@ -63,17 +63,68 @@ func BubbleSort(arr []int) {
 	....
 	...
 */
-func InsertionSort(arr []int)  {
+func InsertionSort(arr []int) {
 	if arr == nil || len(arr) <= 1 {
 		return
 	}
 
 	for i := 1; i < len(arr); i++ {
-		for j := i; j - 1 >= 0; j-- {
-			if arr[j - 1] > arr[j] {
+		for j := i; j-1 >= 0; j-- {
+			if arr[j-1] > arr[j] {
 				//utils.IntSliceSwap(arr, j, j - 1)
-				xor.Swap(arr, j, j - 1)
+				xor.Swap(arr, j, j-1)
 			}
 		}
+	}
+}
+
+func MergeSort(arr []int) {
+	if arr == nil || len(arr) <= 1 {
+		return
+	}
+	processMergeSort(arr, 0, len(arr)-1)
+}
+
+func processMergeSort(arr []int, L, R int) {
+	if L == R {
+		return
+	}
+	mid := L + (R-L)/2
+	processMergeSort(arr, L, mid)
+	processMergeSort(arr, mid+1, R)
+	merge(arr, L, mid, R)
+}
+
+func merge(arr []int, L, M, R int) {
+	helpArr := make([]int, R-L+1)
+	hIdx := 0
+	p1 := L
+	p2 := M + 1
+
+	for p1 <= M && p2 <= R {
+		if arr[p1] <= arr[p2] {
+			helpArr[hIdx] = arr[p1]
+			p1++
+		} else {
+			helpArr[hIdx] = arr[p2]
+			p2++
+		}
+		hIdx++
+	}
+
+	for p1 <= M {
+		helpArr[hIdx] = arr[p1]
+		p1++
+		hIdx++
+	}
+
+	for p2 <= R {
+		helpArr[hIdx] = arr[p2]
+		p2++
+		hIdx++
+	}
+
+	for i, v := range helpArr {
+		arr[L+i] = v
 	}
 }

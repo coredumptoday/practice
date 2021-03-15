@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/coredumptoday/practice/other"
 	"github.com/coredumptoday/practice/utils"
+	"sort"
 	"testing"
 )
 
@@ -76,5 +77,47 @@ func TestRevCount(t *testing.T) {
 		fmt.Println("Nice!")
 	} else {
 		fmt.Println("Fail!")
+	}
+}
+
+func TestComparator(t *testing.T) {
+	student1 := &other.Student{
+		Id:   4,
+		Age:  40,
+		Name: "A",
+	}
+	student2 := &other.Student{
+		Id:   4,
+		Age:  21,
+		Name: "B",
+	}
+	student3 := &other.Student{
+		Id:   3,
+		Age:  12,
+		Name: "C",
+	}
+	student4 := &other.Student{
+		Id:   3,
+		Age:  62,
+		Name: "D",
+	}
+	student5 := &other.Student{
+		Id:   3,
+		Age:  42,
+		Name: "E",
+	}
+	// D E C A B
+	students := other.IdUpAgeDown{
+		student1,
+		student2,
+		student3,
+		student4,
+		student5,
+	}
+
+	sort.Sort(students)
+
+	for _, v := range students {
+		fmt.Println("Id: ", v.Id, "Age: ", v.Age, "Name: ", v.Name)
 	}
 }

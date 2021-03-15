@@ -30,6 +30,7 @@ type prefixTreeNode struct {
 	path      map[string]*prefixTreeNode
 }
 
+//前缀树
 func NewPrefixTree() *PrefixTree {
 	return &PrefixTree{
 		root: newNode(),

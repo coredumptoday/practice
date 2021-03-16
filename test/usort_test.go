@@ -201,3 +201,54 @@ func TestHeapSort(t *testing.T) {
 		fmt.Println("Fail!")
 	}
 }
+
+//快速排序
+func TestQuickSort(t *testing.T) {
+	testTime := 500000
+	maxSize := 50
+	maxValue := 100
+	succeed := true
+
+	for i := 0; i < testTime; i++ {
+		a1 := utils.GenerateRandomSlice(maxSize, maxValue)
+		a2 := make([]int, len(a1))
+		a3 := make([]int, len(a1))
+		a4 := make([]int, len(a1))
+		copy(a2, a1)
+		copy(a3, a1)
+		copy(a4, a1)
+
+		usort.QuickSort1(a1)
+		usort.QuickSort2(a2)
+		usort.QuickSort3(a3)
+		//fmt.Println(a1)
+		//fmt.Println(a2)
+		//fmt.Println(a3)
+		//return
+
+		sort.Ints(a4)
+
+		if !utils.IsSliceEqual(a1, a4) || !utils.IsSliceEqual(a2, a4) || !utils.IsSliceEqual(a3, a4) {
+			succeed = false
+			fmt.Println("a1: ", a1)
+			fmt.Println("a2: ", a2)
+			fmt.Println("a3: ", a3)
+			fmt.Println("a4: ", a4)
+			break
+		}
+
+		if (i+1)%20000 == 0 {
+			fmt.Println("HeapSort succeed count: ", i+1)
+			fmt.Println("a1: ", a1)
+			fmt.Println("a2: ", a2)
+			fmt.Println("a3: ", a3)
+			fmt.Println("a4: ", a4)
+		}
+	}
+
+	if succeed {
+		fmt.Println("Nice!")
+	} else {
+		fmt.Println("Fail!")
+	}
+}

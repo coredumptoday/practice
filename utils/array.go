@@ -13,6 +13,17 @@ func GenerateRandomSlice(maxSize, maxValue int) []int {
 	return arr
 }
 
+func GeneratePosRandomSlice(maxSize, maxValue int) []int {
+	cap := int(float32(maxSize+1) * GetRandNum())
+	arr := make([]int, cap)
+
+	for i, _ := range arr {
+		arr[i] = GetPosValue(maxValue)
+	}
+
+	return arr
+}
+
 func IntSliceSwap(arr []int, i, j int) {
 	t := arr[i]
 	arr[i] = arr[j]

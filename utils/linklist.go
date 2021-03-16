@@ -7,10 +7,26 @@ import (
 
 func PrintLinkedList(head *linear.Node) {
 	for head != nil {
-		fmt.Print(head.Value, " -> ")
+		fmt.Print(head.Value)
+		head = head.Next
+		if head != nil {
+			fmt.Print(" -> ")
+		}
+	}
+	fmt.Println("")
+}
+
+func PrintLinkedListPos(head *linear.Node, n *linear.Node) {
+	for head != nil {
+		if head == n {
+			fmt.Print("^", "    ")
+		} else {
+			fmt.Print(" ", "    ")
+		}
+
 		head = head.Next
 	}
-	fmt.Println("null")
+	fmt.Println("")
 }
 
 func PrintDoubleList(head *linear.DoubleNode) {

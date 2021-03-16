@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"github.com/coredumptoday/practice/linear"
 	"github.com/coredumptoday/practice/other"
 	"github.com/coredumptoday/practice/utils"
 	"sort"
@@ -139,4 +140,36 @@ func TestOddEvenSort(t *testing.T) {
 		fmt.Print(" ")
 	}
 	fmt.Println("]")
+}
+
+func TestLinkListMid(t *testing.T) {
+	l := &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+
+	m := other.GetMidOrUpMidNode(l)
+	fmt.Println("GetMidOrUpMidNode: ")
+	utils.PrintLinkedList(l)
+	utils.PrintLinkedListPos(l, m)
+
+	m = other.GetMidOrDownMidNode(l)
+	fmt.Println("GetMidOrDownMidNode: ")
+	utils.PrintLinkedList(l)
+	utils.PrintLinkedListPos(l, m)
+
+	m = other.GetMidOrUpMidPreNode(l)
+	fmt.Println("GetMidOrUpMidPreNode: ")
+	utils.PrintLinkedList(l)
+	utils.PrintLinkedListPos(l, m)
+
+	m = other.GetMidOrUpMidNextNode(l)
+	fmt.Println("GetMidOrUpMidNextNode: ")
+	utils.PrintLinkedList(l)
+	utils.PrintLinkedListPos(l, m)
 }

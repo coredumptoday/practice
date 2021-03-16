@@ -121,3 +121,22 @@ func TestComparator(t *testing.T) {
 		fmt.Println("Id: ", v.Id, "Age: ", v.Age, "Name: ", v.Name)
 	}
 }
+
+func TestOddEvenSort(t *testing.T) {
+	maxSize := 30
+	maxValue := 100
+
+	a1 := utils.GenerateRandomSlice(maxSize, maxValue)
+	fmt.Println(a1)
+	idx := other.OddEvenSort(a1, 0, len(a1)-1)
+
+	fmt.Print("[")
+	for i, v := range a1 {
+		fmt.Print(v)
+		if i == idx {
+			fmt.Print("|")
+		}
+		fmt.Print(" ")
+	}
+	fmt.Println("]")
+}

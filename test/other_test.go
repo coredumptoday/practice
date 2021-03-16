@@ -168,7 +168,7 @@ func TestLinkListMid(t *testing.T) {
 	utils.PrintLinkedList(l)
 	utils.PrintLinkedListPos(l, m)
 
-	m = other.GetMidOrUpMidNextNode(l)
+	m = other.GetMidOrDownMidPreNode(l)
 	fmt.Println("GetMidOrUpMidNextNode: ")
 	utils.PrintLinkedList(l)
 	utils.PrintLinkedListPos(l, m)

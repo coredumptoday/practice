@@ -257,3 +257,17 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println()
 
 }
+
+func TestRangeList(t *testing.T) {
+	head := &linear.Node{Value: 7, Next: nil}
+	head.Next = &linear.Node{Value: 9, Next: nil}
+	head.Next.Next = &linear.Node{Value: 1, Next: nil}
+	head.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	head.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	head.Next.Next.Next.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+
+	utils.PrintLinkedList(head)
+	head = other.RangeList(head, 5)
+	utils.PrintLinkedList(head)
+}

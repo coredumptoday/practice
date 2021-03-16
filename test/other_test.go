@@ -173,3 +173,87 @@ func TestLinkListMid(t *testing.T) {
 	utils.PrintLinkedList(l)
 	utils.PrintLinkedListPos(l, m)
 }
+
+func TestIsPalindromeList(t *testing.T) {
+	var head *linear.Node
+
+	head = nil
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next = &linear.Node{Value: 3, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head.Next.Next.Next = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next.Next = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+	head = &linear.Node{Value: 1, Next: nil}
+	head.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head.Next.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head.Next.Next.Next.Next = &linear.Node{Value: 1, Next: nil}
+	utils.PrintLinkedList(head)
+	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
+	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
+	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	fmt.Println()
+
+}

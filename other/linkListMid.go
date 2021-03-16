@@ -19,14 +19,14 @@ func GetMidOrUpMidNode(head *linear.Node) *linear.Node {
 	return slow
 }
 
-//奇数节点获取中点，偶数节点获取下中点（偏向后半）
-func GetMidOrDownMidNode(head *linear.Node) *linear.Node {
+//奇数节点获取中点，偶数节点获取上中点前一个节点
+func GetMidOrUpMidPreNode(head *linear.Node) *linear.Node {
 	if head == nil || head.Next == nil || head.Next.Next == nil {
 		return head
 	}
 
-	slow := head.Next
-	fast := head.Next
+	slow := head
+	fast := head.Next.Next
 
 	for fast.Next != nil && fast.Next.Next != nil {
 		slow = slow.Next
@@ -36,14 +36,14 @@ func GetMidOrDownMidNode(head *linear.Node) *linear.Node {
 	return slow
 }
 
-//奇数节点获取中点，偶数节点获取上中点前一个节点
-func GetMidOrUpMidPreNode(head *linear.Node) *linear.Node {
+//奇数节点获取中点，偶数节点获取下中点（偏向后半）
+func GetMidOrDownMidNode(head *linear.Node) *linear.Node {
 	if head == nil || head.Next == nil || head.Next.Next == nil {
 		return head
 	}
 
-	slow := head
-	fast := head.Next.Next
+	slow := head.Next
+	fast := head.Next
 
 	for fast.Next != nil && fast.Next.Next != nil {
 		slow = slow.Next

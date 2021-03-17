@@ -45,3 +45,20 @@ func TestPrefixTree(t *testing.T) {
 	fmt.Println("finish!")
 
 }
+
+func TestBinTreePrint(t *testing.T) {
+	root := &tree.BinTreeNode{Value: 1}
+	root.LeftNode = &tree.BinTreeNode{Value: 2}
+	root.RightNode = &tree.BinTreeNode{Value: 3}
+	root.LeftNode.LeftNode = &tree.BinTreeNode{Value: 4}
+	root.LeftNode.RightNode = &tree.BinTreeNode{Value: 5}
+	root.RightNode.LeftNode = &tree.BinTreeNode{Value: 6}
+	root.RightNode.RightNode = &tree.BinTreeNode{Value: 7}
+
+	tree.PrintBinTreePre(root)
+	fmt.Println("========")
+	tree.PrintBinTreeMid(root)
+	fmt.Println("========")
+	tree.PrintBinTreePost(root)
+	fmt.Println("========")
+}

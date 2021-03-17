@@ -16,6 +16,28 @@ func PrintLinkedList(head *linear.Node) {
 	fmt.Println("")
 }
 
+func PrintRandLinkedList(head *linear.NodeJmp) {
+	cur := head
+	fmt.Println("next: ")
+	for cur != nil {
+		fmt.Print(cur.Value)
+		cur = cur.Next
+		if cur != nil {
+			fmt.Print(" -> ")
+		}
+	}
+	fmt.Println("")
+	fmt.Println("jump: ")
+	for head != nil {
+		fmt.Print(head.Value)
+		head = head.Jmp
+		if head != nil {
+			fmt.Print(" -> ")
+		}
+	}
+	fmt.Println("")
+}
+
 func PrintLinkedListPos(head *linear.Node, n *linear.Node) {
 	for head != nil {
 		if head == n {

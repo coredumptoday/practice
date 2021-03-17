@@ -280,3 +280,34 @@ func TestRangeList(t *testing.T) {
 	head = other.RangeList(head, 5)
 	utils.PrintLinkedList(head)
 }
+
+func TestCopyLinkListWithRandPtr(t *testing.T) {
+	var origin *linear.NodeJmp
+
+	origin = nil
+	newH := other.CopyLinkListWithRandPtr(origin)
+	fmt.Println("----------- origin1:")
+	utils.PrintRandLinkedList(origin)
+	fmt.Println("----------- new1:")
+	utils.PrintRandLinkedList(newH)
+
+	origin = &linear.NodeJmp{Value: 1, Next: nil}
+	origin.Next = &linear.NodeJmp{Value: 2, Next: nil}
+	origin.Next.Next = &linear.NodeJmp{Value: 3, Next: nil}
+	origin.Next.Next.Next = &linear.NodeJmp{Value: 4, Next: nil}
+	origin.Next.Next.Next.Next = &linear.NodeJmp{Value: 5, Next: nil}
+	origin.Next.Next.Next.Next.Next = &linear.NodeJmp{Value: 6, Next: nil}
+
+	origin.Jmp = origin.Next.Next.Next.Next.Next                //1 -> 6
+	origin.Next.Jmp = origin.Next.Next.Next.Next.Next           //2 -> 6
+	origin.Next.Next.Jmp = origin.Next.Next.Next.Next           //3 -> 5
+	origin.Next.Next.Next.Jmp = origin.Next.Next                //4 -> 3
+	origin.Next.Next.Next.Next.Jmp = nil                        //5 -> nil
+	origin.Next.Next.Next.Next.Next.Jmp = origin.Next.Next.Next //6 -> 4
+
+	newH = other.CopyLinkListWithRandPtr(origin)
+	fmt.Println("----------- origin2:")
+	utils.PrintRandLinkedList(origin)
+	fmt.Println("----------- new2:")
+	utils.PrintRandLinkedList(newH)
+}

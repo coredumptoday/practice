@@ -182,6 +182,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -189,6 +190,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -197,6 +199,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -205,6 +208,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -214,6 +218,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -223,6 +228,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -233,6 +239,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -243,6 +250,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 	head = &linear.Node{Value: 1, Next: nil}
@@ -254,6 +262,7 @@ func TestIsPalindromeList(t *testing.T) {
 	fmt.Println("IsPalindromeWithNSpace\t", other.IsPalindromeWithNSpace(head))
 	fmt.Println("IsPalindromeWithHalfNSpace\t", other.IsPalindromeWithHalfNSpace(head))
 	fmt.Println("IsPalindromeWith1Space\t", other.IsPalindromeWith1Space(head))
+	utils.PrintLinkedList(head)
 	fmt.Println()
 
 }

@@ -77,45 +77,51 @@ func IsPalindromeWith1Space(head *linear.Node) bool {
 		return true
 	}
 
-	n1 := head
-	n2 := head
+	h1 := head
+	h2 := head
 
-	for n2.Next != nil && n2.Next.Next != nil {
-		n1 = n1.Next
-		n2 = n2.Next.Next
+	for h2.Next != nil && h2.Next.Next != nil {
+		h1 = h1.Next
+		h2 = h2.Next.Next
 	}
 
-	n2 = n1.Next
-	n1.Next = nil
+	h2 = h1.Next  //h2指向后半段起始
+	h1.Next = nil //前半段尾部指nil
 
-	var n3 *linear.Node
+	h3 := h1
+	var next *linear.Node
 
-	for n2 != nil {
-		n3 = n2.Next
-		n2.Next = n1
-		n1 = n2
-		n2 = n3
+	for h2 != nil {
+		next = h2.Next
+		h2.Next = h3
+		h3 = h2
+		h2 = next
 	}
 
-	n3 = n1
-	n2 = head
+	h2 = head
+	revh := h3
+
 	res := true
-
-	for n1 != nil && n2 != nil {
-		if n1.Value != n2.Value {
+	for h2 != nil && revh != nil {
+		if h2.Value != revh.Value {
 			res = false
 			break
 		}
-		n1 = n1.Next
-		n2 = n2.Next
+		h2 = h2.Next
+		revh = revh.Next
 	}
-	n1 = n3.Next
-	n3.Next = nil
-	for n1 != nil { // recover list
-		n2 = n1.Next
-		n1.Next = n3
-		n3 = n1
-		n1 = n2
+
+	revh = h3
+	h3 = nil
+	next = nil
+
+	for revh != nil {
+		next = revh.Next
+		revh.Next = h3
+		h3 = revh
+		revh = next
 	}
+
+	//h1.Next = h3
 	return res
 }

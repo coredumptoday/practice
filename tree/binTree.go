@@ -166,3 +166,36 @@ func GetBinTreeMaxWidth(cur *BinTreeNode) int {
 
 	return maxWidth
 }
+
+func IsCompleteBinaryTree(cur *BinTreeNode) bool {
+	if cur == nil {
+		return false
+	}
+	isleaf := false
+	l := list.New()
+	l.PushFront(cur)
+
+	for l.Len() > 0 {
+		e := l.Back()
+		l.Remove(e)
+		cur = e.Value.(*BinTreeNode)
+
+		if cur.LeftNode != nil {
+			l.PushFront(cur.LeftNode)
+		} else {
+			isleaf = true
+		}
+
+		if cur.RightNode != nil {
+			l.PushFront(cur.RightNode)
+		} else {
+			isleaf = true
+		}
+
+		if isleaf && (cur.LeftNode != nil || cur.RightNode != nil) {
+			return false
+		}
+	}
+
+	return true
+}

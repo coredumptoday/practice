@@ -49,7 +49,34 @@ func RangeList(head *linear.Node, v int32) *linear.Node {
 		head = next
 	}
 
-	if lessT != nil {
+	var h, t *linear.Node
+
+	if lessH != nil {
+		h = lessH
+		t = lessT
+	}
+
+	if equalH != nil {
+		if h == nil {
+			h = equalH
+			t = equalT
+		} else {
+			t.Next = equalH
+			t = equalT
+		}
+	}
+
+	if moreH != nil {
+		if h == nil {
+			h = moreH
+			t = moreT
+		} else {
+			t.Next = moreH
+			t = moreT
+		}
+	}
+
+	/*if lessT != nil {
 		lessT.Next = equalH
 		if equalT == nil {
 			equalT = lessT
@@ -66,5 +93,6 @@ func RangeList(head *linear.Node, v int32) *linear.Node {
 		return equalH
 	}
 
-	return moreH
+	return moreH*/
+	return h
 }

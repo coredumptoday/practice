@@ -311,3 +311,28 @@ func TestCopyLinkListWithRandPtr(t *testing.T) {
 	fmt.Println("----------- new2:")
 	utils.PrintRandLinkedList(newH)
 }
+
+func TestLinkListLoop(t *testing.T) {
+	head1 := &linear.Node{}
+	head1.Next = &linear.Node{Value: 1, Next: nil}
+	head1.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head1.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head1.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	head1.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	head1.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	head1.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	head1.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+
+	head2 := &linear.Node{}
+	head2.Next = &linear.Node{Value: 1, Next: nil}
+	head2.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head2.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head2.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	head2.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	head2.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	head2.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	head2.Next.Next.Next.Next.Next.Next.Next.Next = head2.Next.Next.Next.Next
+
+	fmt.Println(linear.GetLoopNode(head1))
+	fmt.Println(linear.GetLoopNode(head2))
+}

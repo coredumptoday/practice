@@ -137,3 +137,35 @@ func (q *doubleEndsQueue) popFromBottom() *DoubleNode {
 	q.length--
 	return cur
 }
+
+//单链表返回成环点
+func GetLoopNode(head *Node) *Node {
+	if head == nil || head.Next == nil {
+		return nil
+	}
+
+	slow := head
+	fast := head
+
+	for fast.Next != nil && fast.Next.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+
+		if slow == fast {
+			break
+		}
+	}
+
+	if fast != slow {
+		return nil
+	}
+
+	fast = head
+
+	for fast != slow {
+		fast = fast.Next
+		slow = slow.Next
+	}
+
+	return slow
+}

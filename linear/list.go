@@ -169,3 +169,99 @@ func GetLoopNode(head *Node) *Node {
 
 	return slow
 }
+
+//获取两个非成环链表相交点
+func GetLinkListCrossPointNoLoop(head1, head2 *Node) *Node {
+	if head1 == nil || head2 == nil {
+		return nil
+	}
+
+	c1, c2 := 0, 0
+	cur1 := head1
+	cur2 := head2
+
+	for cur1 != nil {
+		c1++
+		cur1 = cur1.Next
+	}
+
+	for cur2 != nil {
+		c2++
+		cur2 = cur2.Next
+	}
+
+	if cur1 != cur2 {
+		return nil
+	}
+
+	for head1 != nil && head2 != nil {
+		if c1 == c2 {
+			if head1 == head2 {
+				return head1
+			}
+			c1--
+			c2--
+			head1 = head1.Next
+			head2 = head2.Next
+		} else if c1 > c2 {
+			c1--
+			head1 = head1.Next
+		} else {
+			c2--
+			head2 = head2.Next
+		}
+	}
+
+	return nil
+}
+
+//获取两个成环链表相交点
+func GetLinkListCrossPointWithLoop(head1, head2, endNode1, endNode2 *Node) *Node {
+	if head1 == nil || head2 == nil {
+		return nil
+	}
+
+	if endNode1 == endNode2 {
+		c1, c2 := 0, 0
+		cur1 := head1
+		cur2 := head2
+
+		for cur1 != endNode1 {
+			c1++
+			cur1 = cur1.Next
+		}
+
+		for cur2 != endNode1 {
+			c2++
+			cur2 = cur2.Next
+		}
+
+		for head1 != endNode1 && head2 != endNode1 {
+			if c1 == c2 {
+				if head1 == head2 {
+					return head1
+				}
+				c1--
+				c2--
+				head1 = head1.Next
+				head2 = head2.Next
+			} else if c1 > c2 {
+				c1--
+				head1 = head1.Next
+			} else {
+				c2--
+				head2 = head2.Next
+			}
+		}
+
+		return nil
+	} else {
+		cur := endNode1.Next
+		for cur != endNode1 {
+			if cur == endNode2 {
+				return endNode2
+			}
+		}
+		return nil
+	}
+}

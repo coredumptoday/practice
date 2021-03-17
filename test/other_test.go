@@ -313,6 +313,7 @@ func TestCopyLinkListWithRandPtr(t *testing.T) {
 }
 
 func TestLinkListLoop(t *testing.T) {
+	//0->1->2->3->4->5->6->7->8->nil
 	head1 := &linear.Node{}
 	head1.Next = &linear.Node{Value: 1, Next: nil}
 	head1.Next.Next = &linear.Node{Value: 2, Next: nil}
@@ -323,6 +324,7 @@ func TestLinkListLoop(t *testing.T) {
 	head1.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
 	head1.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
 
+	//0->1->2->3->4->5->6->7->3
 	head2 := &linear.Node{}
 	head2.Next = &linear.Node{Value: 1, Next: nil}
 	head2.Next.Next = &linear.Node{Value: 2, Next: nil}
@@ -331,8 +333,32 @@ func TestLinkListLoop(t *testing.T) {
 	head2.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
 	head2.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
 	head2.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
-	head2.Next.Next.Next.Next.Next.Next.Next.Next = head2.Next.Next.Next.Next
+	head2.Next.Next.Next.Next.Next.Next.Next.Next = head2.Next.Next.Next
 
+	//0->1->2->3->4->5->6->7->8->nil
+	head3 := &linear.Node{}
+	head3.Next = &linear.Node{Value: 1, Next: nil}
+	head3.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head3.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head3.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	head3.Next.Next.Next.Next.Next = head1.Next.Next.Next.Next.Next
+
+	//0->1->2->3->4->5->6->7->3
+	head4 := &linear.Node{}
+	head4.Next = &linear.Node{Value: 1, Next: nil}
+	head4.Next.Next = &linear.Node{Value: 2, Next: nil}
+	head4.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	head4.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	head4.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	head4.Next.Next.Next.Next.Next.Next = head2.Next.Next
+
+	fmt.Println("loop node:")
 	fmt.Println(linear.GetLoopNode(head1))
 	fmt.Println(linear.GetLoopNode(head2))
+
+	fmt.Println("cross node no loop:")
+	fmt.Println(linear.GetLinkListCrossPointNoLoop(head1, head3))
+
+	fmt.Println("cross node with loop:")
+	fmt.Println(linear.GetLinkListCrossPointWithLoop(head2, head4, linear.GetLoopNode(head2), linear.GetLoopNode(head4)))
 }

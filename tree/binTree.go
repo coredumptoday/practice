@@ -25,7 +25,7 @@ func PrintBinTreeMid(root *BinTreeNode) {
 		return
 	}
 	PrintBinTreeMid(root.LeftNode)
-	fmt.Print(root.Value)
+	fmt.Print(root.Value, "\t")
 	PrintBinTreeMid(root.RightNode)
 }
 

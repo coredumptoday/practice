@@ -109,3 +109,23 @@ func TestTreeComplete(t *testing.T) {
 	fmt.Println("========层序")
 	fmt.Println(tree.IsCompleteBinaryTree(root))
 }
+
+func TestIsBST(t *testing.T) {
+
+	maxLevel := 4
+	maxValue := 100
+	testTimes := 1000000
+
+	for i := 0; i < testTimes; i++ {
+		head := utils.GenerateRandomBST(maxLevel, maxValue)
+		res1 := utils.IsBST(head)
+		res2 := tree.IsBinSearchTree(head)
+		if res1 != res2 {
+			tree.PrintBinTreeMid(head)
+			fmt.Println("Oops!", res1, res2)
+			t.Fail()
+			return
+		}
+	}
+	fmt.Println("finish!")
+}

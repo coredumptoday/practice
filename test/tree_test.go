@@ -56,9 +56,30 @@ func TestBinTreePrint(t *testing.T) {
 	root.RightNode.RightNode = &tree.BinTreeNode{Value: 7}
 
 	tree.PrintBinTreePre(root)
-	fmt.Println("========")
+	fmt.Println("========先序递归")
+	tree.PrintBinTreePreNonRecursion(root)
+	fmt.Println("========先序非递归")
 	tree.PrintBinTreeMid(root)
-	fmt.Println("========")
+	fmt.Println("========中序递归")
+	tree.PrintBinTreeMidNonRecursion(root)
+	fmt.Println("========中序非递归")
 	tree.PrintBinTreePost(root)
-	fmt.Println("========")
+	fmt.Println("========后续递归")
+	tree.PrintBinTreeForDeep(root)
+	fmt.Println("========层序")
+
+}
+
+func TestTreeMaxWidth(t *testing.T) {
+	root := &tree.BinTreeNode{Value: 1}
+	root.LeftNode = &tree.BinTreeNode{Value: 2}
+	root.RightNode = &tree.BinTreeNode{Value: 3}
+	root.LeftNode.LeftNode = &tree.BinTreeNode{Value: 4}
+	root.LeftNode.RightNode = &tree.BinTreeNode{Value: 5}
+	root.RightNode.LeftNode = &tree.BinTreeNode{Value: 6}
+	root.RightNode.RightNode = &tree.BinTreeNode{Value: 7}
+	root.LeftNode.RightNode.LeftNode = &tree.BinTreeNode{Value: 8}
+	tree.PrintBinTreeForDeep(root)
+	fmt.Println("========层序")
+	fmt.Println(tree.GetBinTreeMaxWidth(root))
 }

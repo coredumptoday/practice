@@ -374,3 +374,53 @@ func TestRevLinkListForGroupK(t *testing.T) {
 	a := linear.RevLinkedListForGroupK(l, 3)
 	utils.PrintLinkedList(a)
 }
+
+//删除链表m-n的元素
+func TestLinkListRemoveRange(t *testing.T) {
+	l := &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 9, Next: nil}
+
+	utils.PrintLinkedList(l)
+	linear.LinkListRemoveRange(l, 3, 5)
+	utils.PrintLinkedList(l)
+}
+
+func TestRemoveDupNodeFromSortList(t *testing.T) {
+	l := &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 9, Next: nil}
+
+	utils.PrintLinkedList(l)
+	linear.RemoveDupNodeFromSortList(l)
+	utils.PrintLinkedList(l)
+
+	l = &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 9, Next: nil}
+
+	utils.PrintLinkedList(l)
+	linear.RemoveDupNodeFromSortList(l)
+	utils.PrintLinkedList(l)
+}

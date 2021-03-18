@@ -355,3 +355,42 @@ func GetLinkListCrossPointWithLoop(head1, head2, endNode1, endNode2 *Node) *Node
 		return nil
 	}
 }
+
+func LinkListRemoveRange(cur *Node, m, n int) {
+	if cur == nil {
+		return
+	}
+	count := 0
+	var prev, back *Node
+	for cur != nil {
+		count++
+		if count+1 == m {
+			prev = cur
+		}
+		if count == n {
+			back = cur.Next
+			break
+		}
+		cur = cur.Next
+	}
+
+	prev.Next = back
+}
+
+func RemoveDupNodeFromSortList(cur *Node) {
+	if cur == nil {
+		return
+	}
+
+	curVal := cur.Value
+	curStart := cur
+
+	for cur != nil {
+		cur = cur.Next
+		if cur != nil && cur.Value != curVal {
+			curStart.Next = cur
+			curVal = cur.Value
+			curStart = cur
+		}
+	}
+}

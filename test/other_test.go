@@ -382,38 +382,40 @@ func TestPrintArray(t *testing.T) {
 
 	row := len(arr)
 	col := len(arr[0])
-	pointCount := row * col
-	times := 0
+	total := row * col
+	count := 0
+
 	for n := 0; ; n++ {
-		for j := n; j < col-n; j++ {
-			fmt.Print(arr[n][j], "\t")
-			times++
+		for i := n; i < col-n; i++ {
+			fmt.Print(arr[n][i], "\t")
+			count++
 		}
-		if times == pointCount {
+		if count == total {
 			break
 		}
-		for j := n + 1; j < row-n; j++ {
-			fmt.Print(arr[j][col-n-1], "\t")
-			times++
+		for i := n + 1; i < row-n; i++ {
+			fmt.Print(arr[i][col-n-1], "\t")
+			count++
 		}
-		if times == pointCount {
+		if count == total {
 			break
 		}
-		for j := col - n - 2; j >= n; j-- {
-			fmt.Print(arr[row-n-1][j], "\t")
-			times++
+		for i := col - n - 2; i >= n; i-- {
+			fmt.Print(arr[row-n-1][i], "\t")
+			count++
 		}
-		if times == pointCount {
+		if count == total {
 			break
 		}
-		for j := row - n - 2; j > n; j-- {
-			fmt.Print(arr[j][n], "\t")
-			times++
+		for i := row - n - 2; i > n; i-- {
+			fmt.Print(arr[i][n], "\t")
+			count++
 		}
-		if times == pointCount {
+		if count == total {
 			break
 		}
 	}
+
 	fmt.Println()
 }
 

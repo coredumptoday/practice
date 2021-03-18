@@ -338,3 +338,39 @@ func TestQueueStack(t *testing.T) {
 
 	fmt.Println("test finish!")
 }
+
+//在m-n的范围上翻转单链表
+func TestRevLinkListForRange(t *testing.T) {
+	l := &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 9, Next: nil}
+
+	utils.PrintLinkedList(l)
+	linear.RevLinkedListForRange(l, 3, 7)
+	utils.PrintLinkedList(l)
+}
+
+//每K个元素翻转一次单链表
+func TestRevLinkListForGroupK(t *testing.T) {
+	l := &linear.Node{}
+	l.Next = &linear.Node{Value: 1, Next: nil}
+	l.Next.Next = &linear.Node{Value: 2, Next: nil}
+	l.Next.Next.Next = &linear.Node{Value: 3, Next: nil}
+	l.Next.Next.Next.Next = &linear.Node{Value: 4, Next: nil}
+	l.Next.Next.Next.Next.Next = &linear.Node{Value: 5, Next: nil}
+	l.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 6, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 7, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 8, Next: nil}
+	l.Next.Next.Next.Next.Next.Next.Next.Next.Next = &linear.Node{Value: 9, Next: nil}
+
+	utils.PrintLinkedList(l)
+	a := linear.RevLinkedListForGroupK(l, 3)
+	utils.PrintLinkedList(a)
+}

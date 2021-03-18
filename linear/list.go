@@ -14,6 +14,96 @@ func RevLinkedList(head *Node) *Node {
 	return prev
 }
 
+func RevLinkedListForRange(head *Node, m, n int) *Node {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	count := 0
+	h1S := head
+	h1d := head
+
+	for h1d != nil {
+		count++
+		if count+1 == m {
+			break
+		}
+		h1d = h1d.Next
+	}
+	h2S := h1d.Next
+	h2d := h2S
+	h1d.Next = nil
+	count++
+
+	var prev *Node
+	var next *Node
+
+	for h2d != nil && count <= n {
+		next = h2d.Next
+		h2d.Next = prev
+		prev = h2d
+		h2d = next
+		count++
+	}
+
+	h1d.Next = prev
+	h2S.Next = next
+
+	return h1S
+}
+
+func revGroup(cur *Node) (start *Node, end *Node) {
+	end = cur
+
+	var prev, next *Node
+
+	for cur != nil {
+		next = cur.Next
+		cur.Next = prev
+		prev = cur
+		cur = next
+	}
+
+	return prev, end
+}
+
+func RevLinkedListForGroupK(head *Node, k int) *Node {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	var prevStart, prevEnd *Node
+	var groupStart, groupEnd *Node
+	backStart := head
+	cur := head
+	count := 0
+
+	for cur != nil {
+		count++
+		backStart = cur.Next
+		if count == 1 {
+			groupStart = cur
+		} else if count == k {
+			groupEnd = cur
+			groupEnd.Next = nil
+			s, e := revGroup(groupStart)
+			if prevStart == nil {
+				prevStart = s
+				prevEnd = e
+			} else {
+				prevEnd.Next = s
+				prevEnd = e
+			}
+			prevEnd.Next = backStart
+			groupStart = nil
+			groupEnd = nil
+			count = 0
+		}
+		cur = backStart
+	}
+
+	return prevStart
+}
+
 func RevDoubleList(head *DoubleNode) *DoubleNode {
 	var prev *DoubleNode
 	var next *DoubleNode

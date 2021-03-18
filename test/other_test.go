@@ -362,3 +362,55 @@ func TestLinkListLoop(t *testing.T) {
 	fmt.Println("cross node with loop:")
 	fmt.Println(linear.GetLinkListCrossPointWithLoop(head2, head4, linear.GetLoopNode(head2), linear.GetLoopNode(head4)))
 }
+
+func TestPrintArray(t *testing.T) {
+	arr := [][]int{
+		{1, 2, 3, 4, 5, 6},
+		{7, 8, 9, 10, 11, 12},
+		{13, 14, 15, 16, 17, 18},
+		{19, 20, 21, 22, 23, 24},
+	}
+
+	for _, v := range arr {
+		for _, vv := range v {
+			fmt.Print(vv, "\t")
+		}
+		fmt.Println()
+	}
+
+	row := len(arr)
+	col := len(arr[0])
+	pointCount := row * col
+	times := 0
+	for n := 0; ; n++ {
+		for j := n; j < col-n; j++ {
+			fmt.Print(arr[n][j], "\t")
+			times++
+		}
+		if times == pointCount {
+			break
+		}
+		for j := n + 1; j < row-n; j++ {
+			fmt.Print(arr[j][col-n-1], "\t")
+			times++
+		}
+		if times == pointCount {
+			break
+		}
+		for j := col - n - 2; j >= n; j-- {
+			fmt.Print(arr[row-n-1][j], "\t")
+			times++
+		}
+		if times == pointCount {
+			break
+		}
+		for j := row - n - 2; j > n; j-- {
+			fmt.Print(arr[j][n], "\t")
+			times++
+		}
+		if times == pointCount {
+			break
+		}
+	}
+	fmt.Println()
+}

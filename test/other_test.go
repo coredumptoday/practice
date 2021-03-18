@@ -6,6 +6,8 @@ import (
 	"github.com/coredumptoday/practice/other"
 	"github.com/coredumptoday/practice/utils"
 	"sort"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -413,4 +415,61 @@ func TestPrintArray(t *testing.T) {
 		}
 	}
 	fmt.Println()
+}
+
+func TestBigNum(t *testing.T) {
+	str1 := []rune("979999")
+	str2 := []rune("1111")
+
+	fmt.Println(979999 + 1111)
+
+	var long, short []rune
+	flag := 0
+	if len(str1) > len(str2) {
+		long = str1
+		short = str2
+	} else {
+		long = str2
+		short = str1
+	}
+	res := make([]string, len(long)+1)
+
+	longEnd := len(long) - 1
+	shortEnd := len(short) - 1
+	newEnd := len(res) - 1
+
+	for longEnd >= 0 || shortEnd >= 0 {
+		longNum, _ := strconv.Atoi(string(long[longEnd]))
+		if shortEnd >= 0 {
+			shortNum, _ := strconv.Atoi(string(short[shortEnd]))
+			addRes := longNum + shortNum + flag
+			if addRes >= 10 {
+				flag = 1
+				addRes = addRes % 10
+			} else {
+				flag = 0
+			}
+			res[newEnd] = strconv.Itoa(addRes)
+			longEnd--
+			shortEnd--
+			newEnd--
+		} else {
+			addRes := longNum + flag
+			if addRes >= 10 {
+				flag = 1
+				addRes = addRes % 10
+			} else {
+				flag = 0
+			}
+			res[newEnd] = strconv.Itoa(addRes)
+			longEnd--
+			newEnd--
+		}
+
+	}
+	if flag > 0 {
+		res[newEnd] = "1"
+	}
+
+	fmt.Println(strings.Join(res, ""))
 }

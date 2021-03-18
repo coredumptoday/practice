@@ -424,3 +424,23 @@ func TestRemoveDupNodeFromSortList(t *testing.T) {
 	linear.RemoveDupNodeFromSortList(l)
 	utils.PrintLinkedList(l)
 }
+
+func TestAaa(t *testing.T) {
+	str := "一二三三二一"
+	strArr := []rune(str)
+
+	res := true
+	s := 0
+	e := len(strArr) - 1
+
+	for s < e {
+		if strArr[s] != strArr[e] {
+			res = false
+			break
+		}
+		s++
+		e--
+	}
+
+	fmt.Println(res)
+}

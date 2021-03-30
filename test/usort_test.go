@@ -242,7 +242,7 @@ func TestHeapSort(t *testing.T) {
 
 		h := heap.NewCusMaxHeap(len(a3))
 		for _, v := range a3 {
-			h.Push(v)
+			_ = h.Push(v)
 		}
 		for i := len(a3) - 1; i >= 0; i-- {
 			v, _ := h.Pop()

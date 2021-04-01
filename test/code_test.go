@@ -209,6 +209,7 @@ func (b *bbb) AAA() {
 	fmt.Println("aaa")
 }
 
+//如何判断struct实现了某个接口
 func TestInterFace(t *testing.T) {
 	var b interface{}
 	b = &bbb{}

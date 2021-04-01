@@ -211,9 +211,11 @@ func (b *bbb) AAA() {
 
 //如何判断struct实现了某个接口
 func TestInterFace(t *testing.T) {
-	var b interface{}
+	var b, c interface{}
 	b = &bbb{}
+	c = bbb{}
 
 	_, ok := b.(aaa)
-	fmt.Println(ok)
+	_, ok2 := c.(aaa)
+	fmt.Println(ok, ok2)
 }

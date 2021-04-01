@@ -197,3 +197,22 @@ func TestChannel(t *testing.T) {
 	wgReceivers.Wait()
 	log.Println("stopped by", stoppedBy)
 }
+
+type aaa interface {
+	AAA()
+}
+
+type bbb struct {
+}
+
+func (b *bbb) AAA() {
+	fmt.Println("aaa")
+}
+
+func TestInterFace(t *testing.T) {
+	var b interface{}
+	b = &bbb{}
+
+	_, ok := b.(aaa)
+	fmt.Println(ok)
+}
